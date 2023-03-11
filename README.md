@@ -25,14 +25,18 @@ Now we have a streamed.txt containing all lines with these strings, but there ma
 			file.write(finalfile[x-1].lstrip())
 		
 While we have this loop open, we can also remove those lines with multiple experiments, and just keep the line referring to the last experiment run in a sample:
-		if ('Processed file' in finalfile[x-1]) and ('Changer Loaded Sample' in finalfile[x]):
-			file.write(finalfile[x-1].lstrip())
+
+	if ('Processed file' in finalfile[x-1]) and ('Changer Loaded Sample' in finalfile[x]):
+		file.write(finalfile[x-1].lstrip())
+		
 Because of the way I have written the loop, I would still need outside the loop one last check:
+
 	if ('Processed file' in finalfile[len(finalfile)-1]):
 		file.write(finalfile[x].lstrip())
 	file.close()			
 	
 And now we have a streamed_final.txt where every two lines I have the beggining time and end time of each sample, such as:
+
 	28-OCT-2022 14:41:09 : ecx400 : INFO : Changer Loaded Sample
 	28-OCT-2022 14:45:21 : Processed file AB_sample1_PROTON-1.jdf in 0.20563[s]
 	
