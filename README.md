@@ -5,6 +5,7 @@ But not all softwares provide such tools. For example, Delta 4.3.6, which has be
 If we want to run a python script we first need to have python installed, and then in the (Windows) command line we type python scriptname.py. This will run the script called scriptname.py if it is located in the same folder where we call it from. We can easily call a script located in a different location or files called within the script located in other folder by just adding the full path.
 
 The first thing that we need to do is to find lines that provide the information that we want to extract. In this case I am interested in how long did it take to run the experiments in a sample so I will focus on the lines containing 'Changer Loaded Sample', which indicate that the sample is being loaded, and the lines containing 'Processed file', which indicate that the experiment has finished running in automation and is being processed (note that this would not include experiments running outside automation, if we wanted those we could look instead for 'Upload complete for'). This action can be done with the following lines:
+
 	with open("console.log", 'r') as read_obj:
 		file = open("streamed.txt", "w")
 		for line in read_obj:
